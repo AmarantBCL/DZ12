@@ -13,7 +13,7 @@ public class Main {
     }
 
     private static void task1() {
-        GameBoard gb = new GameBoard();
+        GameBoard gb = new GameBoard(3, 5);
         gb.createUnits();
         gb.printUnitList();
         gb.checkUnitTasks();

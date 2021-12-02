@@ -19,7 +19,18 @@ import java.util.List;
 */
 public class GameBoard {
 
+    private Unit[][] battleField;
+    private String fieldGraphics;
     private final List<Unit> unitList = new ArrayList<>();
+
+    public String getFieldGraphics() {
+        return fieldGraphics;
+    }
+
+    public GameBoard(int width, int height) {
+        battleField = new Unit[height][width];
+        drawBattlefield();
+    }
 
     public void createUnits() {
         add(new Fence());
@@ -61,5 +72,32 @@ public class GameBoard {
             System.out.println(unit.toString());
         }
         System.out.println("");
+    }
+
+    private void drawBattlefield() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < battleField.length; i++) {
+            sb.append(repeatChar("+---", battleField[i].length) + "+\n");
+            for (int j = 0; j < battleField[i].length; j++) {
+                if (battleField[i][j] != null) {
+                    Unit unit = battleField[i][j];
+                    sb.append("|" + " U ");
+                } else {
+                    sb.append("|   ");
+                }
+            }
+            sb.append("|\n");
+        }
+        sb.append(repeatChar("+---", battleField[0].length) + "+\n");
+        fieldGraphics = sb.toString();
+    }
+
+    private String repeatChar(String s, int times) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < times; i++) {
+            sb.append(s);
+        }
+
+        return sb.toString();
     }
 }
