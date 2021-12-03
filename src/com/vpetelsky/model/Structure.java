@@ -1,4 +1,4 @@
-package com.vpetelsky.units;
+package com.vpetelsky.model;
 
 public class Structure extends Unit {
 
@@ -6,5 +6,9 @@ public class Structure extends Unit {
 
     public boolean isBreakable() {
         return isBreakable;
+    }
+
+    public Structure(Team team) {
+        super(team);
     }
 }

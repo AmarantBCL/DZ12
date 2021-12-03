@@ -1,5 +1,7 @@
 package com.vpetelsky;
 
+import com.vpetelsky.model.*;
+
 /*
 2*) Задана строка из английских слов через пробел. Написать метод который возвращает те же слова в
 обратном порядке. При этом слова изменены так что в каждом слове первая буква большая а остальные маленькие.
@@ -7,33 +9,9 @@ package com.vpetelsky;
 public class Main {
 
     public static void main(String[] args) {
-        task1();
-        System.out.println();
-        task2();
-    }
-
-    private static void task1() {
-        GameBoard gb = new GameBoard(3, 5);
-        gb.createUnits();
-        gb.printUnitList();
-        gb.checkUnitTasks();
-    }
-
-    private static void task2() {
-        String myStr = "John likes swimming";
-        System.out.println(myStr + " <--> " + reverseString(myStr));
-    }
-
-    private static String reverseString(String str) {
-        StringBuilder sb = new StringBuilder();
-        String words[] = str.split("\\s+");
-        for (int i = words.length - 1; i >= 0; i--) {
-            char c = words[i].charAt(0);
-            int index = sb.length();
-            sb.append(words[i] + " ");
-            sb.setCharAt(index, Character.toUpperCase(c));
-        }
-
-        return sb.toString().trim();
+        Team team1 = new Team();
+        Team team2 = new Team();
+        GameBoard gb = new GameBoard(3, 5, team1, team2);
+        gb.showBattlefield();
     }
 }
